@@ -36,7 +36,7 @@ export default function WorldMap() {
   }, []);
 
   const countries = useMemo(() => {
-    const collection = feature(world as never, (world as never).objects.countries);
+    const collection = feature(world as any, (world as any).objects.countries);
     return collection.features;
   }, []);
 
@@ -84,7 +84,7 @@ export default function WorldMap() {
         role="img"
       >
         <rect x="0" y="0" width={WIDTH} height={HEIGHT} fill="#f7f1ea" />
-        {countries.map((country, index) => {
+        {countries.map((country: any, index: number) => {
           const name = country.properties?.name as string;
           const metric = metricsByName.get(name);
           const value = metric

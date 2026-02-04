@@ -37,14 +37,14 @@ export default function CategoryDonut() {
   const data2018 = getShares(2018);
   const data2026 = getShares(2026);
 
-  const pieGen = pie<{ key: string; value: number }>().value((d) => d.value);
+  const pieGen = pie().value((d: { value: number }) => d.value);
 
-  const outerArc = arc<unknown>()
+  const outerArc = arc()
     .innerRadius(85)
     .outerRadius(120)
     .cornerRadius(8);
 
-  const innerArc = arc<unknown>()
+  const innerArc = arc()
     .innerRadius(55)
     .outerRadius(78)
     .cornerRadius(8);
@@ -62,7 +62,7 @@ export default function CategoryDonut() {
         </text>
 
         <g transform={`translate(${CENTER.x}, ${CENTER.y + 6})`}>
-          {pieGen(data2026).map((slice) => (
+          {pieGen(data2026).map((slice: any) => (
             <path
               key={`2026-${slice.data.key}`}
               d={outerArc(slice) ?? undefined}
@@ -95,7 +95,7 @@ export default function CategoryDonut() {
               onMouseLeave={() => setTooltip(null)}
             />
           ))}
-          {pieGen(data2018).map((slice) => (
+          {pieGen(data2018).map((slice: any) => (
             <path
               key={`2018-${slice.data.key}`}
               d={innerArc(slice) ?? undefined}

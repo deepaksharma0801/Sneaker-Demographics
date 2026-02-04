@@ -17,18 +17,18 @@ export default function HeroChart() {
     ])
     .range([HEIGHT - MARGIN.bottom, MARGIN.top]);
 
-  const linePath = line<{ year: number; value: number }>()
-    .x((point) => xScale(point.year))
-    .y((point) => yScale(point.value))
+  const linePath = line()
+    .x((point: { year: number; value: number }) => xScale(point.year))
+    .y((point: { year: number; value: number }) => yScale(point.value))
     .curve(curveMonotoneX)
-    .defined((point) => Number.isFinite(point.value))(globalSales);
+    .defined((point: { value: number }) => Number.isFinite(point.value))(globalSales);
 
-  const areaPath = area<{ year: number; value: number }>()
-    .x((point) => xScale(point.year))
+  const areaPath = area()
+    .x((point: { year: number }) => xScale(point.year))
     .y0(HEIGHT - MARGIN.bottom)
-    .y1((point) => yScale(point.value))
+    .y1((point: { value: number }) => yScale(point.value))
     .curve(curveMonotoneX)
-    .defined((point) => Number.isFinite(point.value))(globalSales);
+    .defined((point: { value: number }) => Number.isFinite(point.value))(globalSales);
 
   return (
     <svg

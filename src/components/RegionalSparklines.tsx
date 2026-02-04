@@ -33,9 +33,9 @@ export default function RegionalSparklines() {
           .domain([Math.min(...values) - 2, Math.max(...values) + 2])
           .range([HEIGHT - MARGIN.bottom, MARGIN.top]);
 
-        const path = line<{ year: number; value: number }>()
-          .x((d) => xScale(d.year))
-          .y((d) => yScale(d.value))
+        const path = line()
+          .x((d: { year: number; value: number }) => xScale(d.year))
+          .y((d: { year: number; value: number }) => yScale(d.value))
           .curve(curveMonotoneX)(region.series);
 
         const latest = region.series[region.series.length - 1];

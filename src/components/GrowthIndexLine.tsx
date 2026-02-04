@@ -43,9 +43,9 @@ export default function GrowthIndexLine() {
     ])
     .range([HEIGHT - MARGIN.bottom, MARGIN.top]);
 
-  const path = line<IndexPoint>()
-    .x((d) => xScale(d.year))
-    .y((d) => yScale(d.value))
+  const path = line()
+    .x((d: IndexPoint) => xScale(d.year))
+    .y((d: IndexPoint) => yScale(d.value))
     .curve(curveMonotoneX)(data);
 
   return (
@@ -78,7 +78,7 @@ export default function GrowthIndexLine() {
           Global demand index (2018 = 100)
         </text>
 
-        {yScale.ticks(4).map((tick) => (
+        {yScale.ticks(4).map((tick: number) => (
           <g key={tick}>
             <line
               x1={MARGIN.left}

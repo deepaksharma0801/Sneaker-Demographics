@@ -23,20 +23,20 @@ export default function CategoryEvolutionChart() {
     .domain([0, yMax + 12])
     .range([HEIGHT - MARGIN.bottom, MARGIN.top]);
 
-  const stackGenerator = stack<typeof categorySeries[0]>().keys([
+  const stackGenerator = stack().keys([
     "performance",
     "lifestyle",
   ]);
 
   const stacked = stackGenerator(categorySeries);
 
-  const areaGenerator = area<[number, number]>()
-    .x((_, index) => xScale(categorySeries[index].year))
-    .y0((d) => yScale(d[0]))
-    .y1((d) => yScale(d[1]))
+  const areaGenerator = area()
+    .x((_: unknown, index: number) => xScale(categorySeries[index].year))
+    .y0((d: [number, number]) => yScale(d[0]))
+    .y1((d: [number, number]) => yScale(d[1]))
     .curve(curveMonotoneX);
 
-  const yTicks = yScale.ticks(4);
+  const yTicks = yScale.ticks(4) as number[];
 
   return (
     <div className="relative h-full w-full">
@@ -68,7 +68,7 @@ export default function CategoryEvolutionChart() {
           </g>
         ))}
 
-        {stacked.map((serie) => (
+        {stacked.map((serie: any) => (
           <path
             key={serie.key}
             d={areaGenerator(serie) ?? ""}

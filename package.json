@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
+    "export": "next build --webpack",
+    "pages": "next build --webpack && rm -rf docs && cp -R out docs && touch docs/.nojekyll",
     "start": "next start",
     "lint": "eslint"
   },

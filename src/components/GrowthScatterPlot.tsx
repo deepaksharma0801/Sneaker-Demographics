@@ -54,7 +54,7 @@ export default function GrowthScatterPlot() {
           Growth vs. per-capita spend
         </text>
 
-        {yScale.ticks(4).map((tick) => (
+        {yScale.ticks(4).map((tick: number) => (
           <g key={tick}>
             <line
               x1={MARGIN.left}
@@ -76,7 +76,7 @@ export default function GrowthScatterPlot() {
           </g>
         ))}
 
-        {xScale.ticks(4).map((tick) => (
+        {xScale.ticks(4).map((tick: number) => (
           <text
             key={tick}
             x={xScale(tick)}

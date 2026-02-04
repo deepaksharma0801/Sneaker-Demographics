@@ -61,7 +61,7 @@ export default function YoYGrowthChart() {
           stroke="#c9c0b5"
         />
 
-        {yScale.ticks(4).map((tick) => (
+        {yScale.ticks(4).map((tick: number) => (
           <text
             key={tick}
             x={MARGIN.left - 8}
